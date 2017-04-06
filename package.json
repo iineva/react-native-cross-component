@@ -1,0 +1,22 @@
+{
+  "name": "react-native-cross-component",
+  "version": "0.0.1",
+  "description": "React Native cross platform component.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "component"
+  ],
+  "author": "Steven",
+  "license": "ISC",
+  "dependencies": {
+    "blacklist": "^1.1.4",
+    "url-parse": "^1.1.8"
+  },
+  "peerDependencies": {
+    "react-native": "*"
+  }
+}
