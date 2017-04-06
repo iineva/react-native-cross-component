@@ -6,6 +6,9 @@ const colors = {
   orange: '#FEBB32',
 }
 
+/**
+ * 只带了按下透明效果的按钮
+ */
 export class None extends React.Component {
 
   static propTypes = {
@@ -40,6 +43,9 @@ export class None extends React.Component {
   )
 }
 
+/**
+ * 线条按钮
+ */
 export class OutLine extends React.Component {
 
   static propTypes = {

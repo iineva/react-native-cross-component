@@ -1,3 +1,6 @@
+/**
+ * 路由器，实现通过URI索引Component
+ */
 import React, { PropTypes } from 'react'
 import Navigator from '../Navigator'
 import URL from 'url-parse'

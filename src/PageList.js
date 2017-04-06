@@ -27,6 +27,12 @@ export default class PageList extends React.Component {
     canLoadMore: PropTypes.func,
     // 刷新前先清空列表
     cleanListBeforReload: PropTypes.bool,
+    // 刷新指示器的颜色
+    refreshControlColor: PropTypes.string,
+  }
+
+  static defaultProps = {
+    canLoadMore: ()=>false
   }
 
   state = {
@@ -49,7 +55,7 @@ export default class PageList extends React.Component {
         loading: false,
         page: page+1,
         list: [...(page===1?[]:self.state.list), ...(list||[])],
-        canLoadMore: this.props.canLoadMore ? this.props.canLoadMore(page) : (list&&list.length>0)
+        canLoadMore: this.props.canLoadMore ? this.props.canLoadMore(list, page) : (list&&list.length>0)
       })
     }).catch(err=>{
       console.error(err)
@@ -101,9 +107,11 @@ export default class PageList extends React.Component {
       initialListSize={20}
       refreshControl={
         <RefreshControl
+          tintColor={this.refreshControlColor||'#FEBB32'}
+          colors={[this.refreshControlColor||'#FEBB32']}
           refreshing={this.state.loading}
           onRefresh={this._reload.bind(this)}
-          progressBackgroundColor="#ffff00" />
+          progressBackgroundColor="#FFF" />
       }
       renderFooter={this._renderFooter.bind(this)}
       onEndReached={this._loadMore.bind(this)}

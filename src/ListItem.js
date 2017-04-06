@@ -1,3 +1,6 @@
+/**
+ * 列表上的一个项目，常用于TableView
+ */
 import React, {PropTypes} from 'react'
 import {View, Text, TextInput} from 'react-native'
 import Line from './Line'

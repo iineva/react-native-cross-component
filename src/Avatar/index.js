@@ -1,3 +1,6 @@
+/**
+ * 头像
+ */
 import React, {PropTypes} from 'react'
 import {Image} from 'react-native'
 

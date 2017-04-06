@@ -1,3 +1,6 @@
+/**
+ * 导航控制器
+ */
 import React, { PropTypes } from 'react'
 import {NavigatorIOS} from 'react-native'
 

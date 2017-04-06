@@ -1,3 +1,6 @@
+/**
+ * 一个像素的线
+ */
 import React, {PropTypes} from 'react'
 import {View, PixelRatio} from 'react-native'
 

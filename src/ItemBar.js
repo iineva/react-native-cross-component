@@ -1,3 +1,7 @@
+/**
+ * 同时显示多个等宽Item，常用于TabBar
+ */
+
 import React, {PropTypes} from 'react'
 import {View, PixelRatio} from 'react-native'
 

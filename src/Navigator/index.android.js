@@ -1,5 +1,7 @@
+/**
+ * 导航控制器
+ */
 import React, { PropTypes } from 'react'
-
 import {
   Navigator as RNNavigator,
   BackAndroid,
@@ -86,7 +88,7 @@ export default class Navigator extends React.Component {
                   title={route.title}
                   onBackPress={this._value(route.onBackPress, this.props.onBackPress, this._onHardwareBackPress.bind(this))} />
               )}
-              {React.createElement(route.component, { navigator, ...route.passProps })}
+              {React.createElement(route.component, { route, navigator, ...route.passProps })}
             </View>
           )
         }}
