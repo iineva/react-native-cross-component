@@ -9,7 +9,6 @@ const styles = {
   main: {
     flex: 1,
     marginBottom: 64,
-    borderWidth:1, borderColor:'red', // TODO : 清除
   }
 }
 
