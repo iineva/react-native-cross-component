@@ -108,7 +108,7 @@ export default class Router extends React.Component {
     <Navigator
       ref='nav'
       initialRoute={this._getInitialRoute()}
-      barTintColor='#2F343B'
-      tintColor='#FFF' />
+      barTintColor={this.props.barTintColor||'#2F343B'}
+      tintColor={this.props.tintColor||'#FFF'} />
   )
 }
