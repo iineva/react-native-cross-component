@@ -22,13 +22,9 @@ export default class Navigator extends React.Component {
     navigationBarHidden: PropTypes.bool,
   }
 
-  push(args) {
-    this.refs.nav.push(args)
-  }
-
-  pop() {
-    this.refs.nav.pop()
-  }
+  push(args) { this.refs.nav.push(args) }
+  pop() { this.refs.nav.pop() }
+  popN(n) { this.refs.nav.popN(n) }
 
   render() {
     return (

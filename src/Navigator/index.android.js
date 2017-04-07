@@ -60,13 +60,10 @@ export default class Navigator extends React.Component {
     BackAndroid.removeEventListener('hardwareBackPress', this._onHardwareBackPress.bind(this))
   }
 
-  push(args) {
-    this.refs.nav && this.refs.nav.push(args)
-  }
+  push(args) { this.refs.nav.push(args) }
+  pop() { this.refs.nav.pop() }
+  popN(n) { this.refs.nav.popN(n) }
 
-  pop() {
-    this.refs.nav && this.refs.nav.pop()
-  }
 
   render() {
     return (

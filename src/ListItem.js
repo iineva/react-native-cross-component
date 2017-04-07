@@ -51,7 +51,10 @@ export class None extends React.Component {
     onPress: PropTypes.func,
     arrow: PropTypes.bool,
     title: PropTypes.string,
-    detail: PropTypes.string,
+    detail: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]),
     borderTop: PropTypes.bool,
     canActive: PropTypes.bool,
     borderBottom: PropTypes.bool,
@@ -82,9 +85,9 @@ export class None extends React.Component {
         {this.props.children?(
           <View style={[styles.content, styles.renderContent]}>{this.props.children}</View>
         ):null}
-        {this.props.detail?(
+        {typeof(this.props.detail)==='string'?(
           <Text style={styles.right}>{this.props.detail}</Text>
-        ):null}
+        ):this.props.detail}
       </View>
       {this.props.arrow?(
         <Icon style={styles.arrow} name='navigate-next' />
