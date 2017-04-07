@@ -15,26 +15,27 @@ export default class Line extends React.Component {
   }
 
   static width = ONE_PIXELS
+  static color = BORDER_COLOR
 
   static style = {
     border: {
-      borderColor: BORDER_COLOR,
+      borderColor: Line.color,
       borderWidth: ONE_PIXELS,
     },
     borderTop: {
-      borderTopColor: BORDER_COLOR,
+      borderTopColor: Line.color,
       borderTopWidth: ONE_PIXELS,
     },
     borderBottom: {
-      borderBottomColor: BORDER_COLOR,
+      borderBottomColor: Line.color,
       borderBottomWidth: ONE_PIXELS,
     },
     borderLeft: {
-      borderLeftColor: BORDER_COLOR,
+      borderLeftColor: Line.color,
       borderLeftWidth: ONE_PIXELS,
     },
     borderRight: {
-      borderRightColor: BORDER_COLOR,
+      borderRightColor: Line.color,
       borderRightWidth: ONE_PIXELS,
     },
   }
