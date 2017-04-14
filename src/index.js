@@ -7,6 +7,7 @@ import Line from './Line'
 import ListItem from './ListItem'
 import PageList from './PageList'
 import Container from './Container'
+import Modal from './Modal'
 
 export {
   Navigator,
@@ -18,4 +19,5 @@ export {
   ListItem,
   PageList,
   Container,
+  Modal,
 }
