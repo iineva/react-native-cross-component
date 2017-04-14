@@ -18,6 +18,7 @@ export class None extends React.Component {
     title: PropTypes.string,
     fontSize: PropTypes.number,
     canActive: PropTypes.bool,
+    disabled: PropTypes.bool,
   }
 
   _style = ()=>({
@@ -34,7 +35,7 @@ export class None extends React.Component {
   })
 
   render = ()=>(
-    <TouchableOpacity activeOpacity={this.props.canActive == false ? 1 : 0.6} style={this._style()} onPress={this.props.onPress}>
+    <TouchableOpacity activeOpacity={this.props.canActive == false ? 1 : 0.6} style={this._style()} onPress={this.props.onPress} disabled={this.props.disabled}>
       {this.props.title?(
         <Text style={this._textStyle()}>{this.props.title}</Text>
       ):null}
