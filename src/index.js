@@ -8,6 +8,7 @@ import ListItem from './ListItem'
 import PageList from './PageList'
 import Container from './Container'
 import Modal from './Modal'
+import DatePicker from './DatePicker'
 
 export {
   Navigator,
@@ -20,4 +21,5 @@ export {
   PageList,
   Container,
   Modal,
+  DatePicker,
 }
