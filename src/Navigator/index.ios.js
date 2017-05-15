@@ -25,6 +25,7 @@ export default class Navigator extends React.Component {
   push(args) { this.refs.nav.push(args) }
   pop() { this.refs.nav.pop() }
   popN(n) { this.refs.nav.popN(n) }
+  replace(args) { this.refs.nav.replace(args) }
 
   render() {
     return (

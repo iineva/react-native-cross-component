@@ -95,6 +95,7 @@ export default class Router extends React.Component {
   push(uri, option) { this.refs.nav && this.refs.nav.push(this._getRoute(uri, option)) }
   pop() { this.refs.nav && this.refs.nav.pop() }
   popN(n) { this.refs.nav && this.refs.nav.popN(n) }
+  replace(uri, option) { this.refs.nav && this.refs.nav.replace(this._getRoute(uri, option)) }
 
   _getInitialRoute() {
     return this._getRoute(this.props.initialRoute||Object.keys(this.props.route)[0])
