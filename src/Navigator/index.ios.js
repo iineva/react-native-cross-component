@@ -20,6 +20,7 @@ export default class Navigator extends React.Component {
     // onBackPress: PropTypes.func,
     // hideBack: PropTypes.bool,
     navigationBarHidden: PropTypes.bool,
+    shadowHidden: PropTypes.bool,
   }
 
   push(args) { this.refs.nav.push(args) }
@@ -39,7 +40,7 @@ export default class Navigator extends React.Component {
         titleTextColor={this.props.tintColor}
         interactivePopGestureEnabled={true}
         navigationBarHidden={this.props.navigationBarHidden}
-        shadowHidden={false}
+        shadowHidden={this.props.shadowHidden}
         translucent={false}
       />
     )

@@ -25,6 +25,7 @@ export default class Navigator extends React.Component {
     onBackPress: PropTypes.func,
     hideBack: PropTypes.bool,
     navigationBarHidden: PropTypes.bool,
+    shadowHidden: PropTypes.bool, // not use
   }
 
   _onHardwareBackPress() {

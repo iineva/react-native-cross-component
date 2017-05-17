@@ -107,8 +107,8 @@ export default class PageList extends React.Component {
       initialListSize={20}
       refreshControl={
         <RefreshControl
-          tintColor={this.refreshControlColor||'#FEBB32'}
-          colors={[this.refreshControlColor||'#FEBB32']}
+          tintColor={this.props.refreshControlColor||'#FEBB32'}
+          colors={[this.props.refreshControlColor||'#FEBB32']}
           refreshing={this.state.loading}
           onRefresh={this._reload.bind(this)}
           progressBackgroundColor="#FFF" />

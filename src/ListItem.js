@@ -51,17 +51,23 @@ export class None extends React.Component {
     onPress: PropTypes.func,
     arrow: PropTypes.bool,
     title: PropTypes.string,
+    titleStyle: PropTypes.object,
     detail: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.element,
     ]),
+    detailStyle: PropTypes.object,
     borderTop: PropTypes.bool,
-    canActive: PropTypes.bool,
+    tapable: PropTypes.bool, // 是否可点击
     borderBottom: PropTypes.bool,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.element),
       PropTypes.element,
     ]),
+  }
+
+  static defaultProps = {
+    tapable: false
   }
 
   _style = ()=>({
@@ -72,7 +78,7 @@ export class None extends React.Component {
   })
 
   render = ()=>(
-    <Button.None style={this._style()} canActive={this.props.canActive} onPress={this.props.onPress}>
+    <Button.None style={this._style()} tapable={this.props.tapable} onPress={this.props.onPress}>
       <View style={styles.content}>
         {this.props.icon?(
           <View style={styles.icon}>
@@ -80,13 +86,13 @@ export class None extends React.Component {
           </View>
         ):null}
         {this.props.title?(
-          <Text style={styles.left}>{this.props.title}</Text>
+          <Text style={{...styles.left, ...this.props.titleStyle}}>{this.props.title}</Text>
         ):null}
         {this.props.children?(
           <View style={[styles.content, styles.renderContent]}>{this.props.children}</View>
         ):null}
         {typeof(this.props.detail)==='string'?(
-          <Text style={styles.right}>{this.props.detail}</Text>
+          <Text style={{...styles.right, ...this.props.detailStyle}}>{this.props.detail}</Text>
         ):this.props.detail}
       </View>
       {this.props.arrow?(
@@ -120,7 +126,7 @@ export class Input extends React.Component {
       icon={this.props.icon}
       borderTop={this.props.borderTop}
       borderBottom={this.props.borderBottom}
-      canActive={false}
+      tapable={false}
       title={this.props.title} >
       <TextInput ref="input" style={{...styles.input, height: (this.props.style||{}).height||44}} {...this.props.inputProps} />
       {this.props.children}
