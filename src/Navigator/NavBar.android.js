@@ -73,7 +73,6 @@ export default class NavBar extends React.Component {
                 <TouchableOpacity onPress={this.props.onBackPress}>
                   <Icon style={[itemStyle, {fontSize: itemStyle.fontSize*1.3}]} name="arrow-back" />
                 </TouchableOpacity>
-                  <View style={lineStyle} />
               </View>
             )}
             {!this.props.title?null:(

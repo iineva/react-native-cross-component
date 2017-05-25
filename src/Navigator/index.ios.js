@@ -27,6 +27,7 @@ export default class Navigator extends React.Component {
   pop() { this.refs.nav.pop() }
   popN(n) { this.refs.nav.popN(n) }
   replace(args) { this.refs.nav.replace(args) }
+  resetTo(args) { this.refs.nav.resetTo(args) }
 
   render() {
     return (
@@ -41,7 +42,7 @@ export default class Navigator extends React.Component {
         interactivePopGestureEnabled={true}
         navigationBarHidden={this.props.navigationBarHidden}
         shadowHidden={this.props.shadowHidden}
-        translucent={false}
+        translucent={true}
       />
     )
   }

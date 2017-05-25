@@ -2,10 +2,11 @@
  * 列表上的一个项目，常用于TableView
  */
 import React, {PropTypes} from 'react'
-import {View, Text, TextInput} from 'react-native'
-import Line from './Line'
-import Button from './Button'
-import Icon from 'react-native-vector-icons/MaterialIcons'
+import {View, Text, TextInput, Image} from 'react-native'
+import Line from '../Line'
+import Button from '../Button'
+import blacklist from 'blacklist'
+import arrowIcon from './img/arrow.png'
 
 const styles = {
   main: {
@@ -23,7 +24,7 @@ const styles = {
     paddingLeft: 10,
   },
   icon: {
-    paddingRight: 12,
+    marginRight: 12,
   },
   left: {
     fontSize: 16,
@@ -34,10 +35,7 @@ const styles = {
     color: '#AAA',
     textAlign: 'right',
   },
-  arrow: {
-    fontSize: 20,
-    color: '#CCC',
-  },
+  arrow: {},
   input: {
     flex: 1,
   },
@@ -47,6 +45,7 @@ export class None extends React.Component {
 
   static propTypes = {
     icon: PropTypes.element,
+    iconStyle: PropTypes.object,
     style: View.propTypes.style,
     onPress: PropTypes.func,
     arrow: PropTypes.bool,
@@ -81,7 +80,7 @@ export class None extends React.Component {
     <Button.None style={this._style()} tapable={this.props.tapable} onPress={this.props.onPress}>
       <View style={styles.content}>
         {this.props.icon?(
-          <View style={styles.icon}>
+          <View style={{...styles.icon, ...this.props.iconStyle}}>
             {this.props.icon}
           </View>
         ):null}
@@ -96,7 +95,7 @@ export class None extends React.Component {
         ):this.props.detail}
       </View>
       {this.props.arrow?(
-        <Icon style={styles.arrow} name='navigate-next' />
+        <Image style={styles.arrow} source={arrowIcon} />
       ):null}
     </Button.None>
   )
@@ -106,31 +105,21 @@ export class None extends React.Component {
 export class Input extends React.Component {
 
   static propTypes = {
-    icon: PropTypes.element,
-    title: PropTypes.string,
-    style: View.propTypes.style,
-    borderTop: PropTypes.bool,
-    borderBottom: PropTypes.bool,
+    ...None.propTypes,
     inputProps: PropTypes.shape(TextInput.propTypes),
-    children: PropTypes.oneOfType([
-      PropTypes.arrayOf(PropTypes.element),
-      PropTypes.element,
-    ]),
+  }
+
+  static defaultProps = {
+    tapable: false
   }
 
   focus = () => this.refs.input.focus()
 
   render = ()=>(
-    <None
-      style={this.props.style}
-      icon={this.props.icon}
-      borderTop={this.props.borderTop}
-      borderBottom={this.props.borderBottom}
-      tapable={false}
-      title={this.props.title} >
+    <Input.component {...blacklist(this.props, 'children')}>
       <TextInput ref="input" style={{...styles.input, height: (this.props.style||{}).height||44}} {...this.props.inputProps} />
       {this.props.children}
-    </None>
+    </Input.component>
   )
 }
 

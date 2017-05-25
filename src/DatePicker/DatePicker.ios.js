@@ -13,7 +13,7 @@ export default class DatePicker extends React.Component {
   }
 
   state = {
-    newDate: this.props.date
+    newDate: null
   }
 
   open() {
@@ -30,7 +30,7 @@ export default class DatePicker extends React.Component {
 
   _onOkPerss() {
     this.close()
-    this.props.onDateChange && this.props.onDateChange(this.state.newDate)
+    this.props.onDateChange && this.props.onDateChange(this.state.newDate||this.props.date)
   }
 
   _styleMain = {
@@ -56,7 +56,7 @@ export default class DatePicker extends React.Component {
         <Button.None style={this._styleButton} title="确认" color="#ef71a1" onPress={this._onOkPerss.bind(this)}/>
       </View>
       <DatePickerIOS
-        date={this.state.newDate}
+        date={this.state.newDate||this.props.date}
         onDateChange={this._onDateChange.bind(this)}
         {...blacklist(this.props, 'ref', 'onDateChange', 'date')}
       />

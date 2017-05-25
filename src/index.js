@@ -9,6 +9,7 @@ import PageList from './PageList'
 import Container from './Container'
 import Modal from './Modal'
 import DatePicker from './DatePicker'
+import PlaceholderImage from './PlaceholderImage'
 
 export {
   Navigator,
@@ -22,4 +23,5 @@ export {
   Container,
   Modal,
   DatePicker,
+  PlaceholderImage,
 }

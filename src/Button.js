@@ -22,12 +22,11 @@ export class None extends React.Component {
     disabled: PropTypes.bool,
   }
 
-  _style = ()=>({
+  _style = ()=>([{
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    ...this.props.style,
-  })
+  }, ...(typeof((this.props.style||{}).map)==='function' ? this.props.style : [this.props.style])])
 
   _textStyle = ()=>({
     textAlign: 'center',
