@@ -13,29 +13,28 @@ export default class Avatar extends React.Component {
     source: PropTypes.oneOfType([Image.propTypes.source, PropTypes.string]),
     style: Image.propTypes.style,
     size: PropTypes.number,
+    imageStyle: Image.propTypes.style,
     placeholderSource: Image.propTypes.source,
-    placeholderStyle: PropTypes.object,
   }
 
   _width = ()=>(this.props.size || (this.props.style||{}).width || 60)
   _height = ()=>(this.props.size || (this.props.style||{}).height || 60)
 
   _style = ()=>([{
+    ...this._imageStyle(),
+  }, ...(typeof((this.props.style||{}).map)==='function' ? this.props.style : [this.props.style||{}])])
+
+  _imageStyle = ()=>({
     width: this._width(),
     height: this._height(),
-    borderWidth: 2,
-    borderColor: 'white',
+    overflow: 'hidden',
     borderRadius: this._width() / 2.0,
-  }, ...(typeof((this.props.style||{}).map)==='function' ? this.props.style : [this.props.style])])
+  })
 
   render = ()=>(
     <PlaceholderImage
       style={this._style()}
-      placeholderStyle={{
-        width: this._width(),
-        height: this._height(),
-        ...this.props.placeholderStyle,
-      }}
+      imageStyle={this._imageStyle()}
       placeholderSource={ Object.keys(this.props).indexOf('placeholderSource')!==-1 ? this.props.placeholderSource : placeholderIcon}
       source={typeof(this.props.source)==='string' ? {uri:this.props.source} : this.props.source}
     />
