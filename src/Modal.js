@@ -1,44 +1,23 @@
 import React from 'react'
 import {Modal} from 'react-native'
+import PropTypes from 'prop-types'
 import ModalBox from 'react-native-modalbox'
 import blacklist from 'blacklist'
 
-export default class Modalx extends React.Component {
-
-  static propTypes = ModalBox.propTypes
-
-  state = {
-    visible: false,
+export default class BEModal extends React.Component {
+  static propTypes = {
+    onRequestClose: PropTypes.func,
+    ...ModalBox.PropTypes,
   }
-
-  open() {
-    const self = this
-    this.setState({visible: true},()=>{
-      self.refs.modal.open()
-    })
+  static defaultProps = {
+    animationDuration: 250,
+    backButtonClose: true,
+    backdropOpacity: 0.3,
+    position: 'bottom',
   }
-
-  close() {
-    this.refs.modal.close()
-  }
-
-  _onClased() {
-    this.setState({visible:false})
-    this.props.onClosed && this.props.onClosed()
-  }
-
   render = ()=>(
-    <Modal visible={this.state.visible} transparent={true}>
-      <ModalBox
-        ref={"modal"}
-        onClosed={this._onClased.bind(this)}
-        backdropOpacity={0.35}
-        animationDuration={250}
-        backButtonClose={true}
-        {...blacklist(this.props, 'ref', 'onClosed')}>
-        {this.props.children}
-      </ModalBox>
+    <Modal visible={this.props.isOpen} transparent={true} onRequestClose={()=>{}}>
+      <ModalBox {...blacklist(this.props, 'onRequestClose')} onClosed={this.props.onRequestClose}/>
     </Modal>
   )
-
 }
