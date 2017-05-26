@@ -12,6 +12,7 @@ const styles = {
     textAlign: 'center',
     fontSize: 12,
     padding: 12,
+    flex: 1,
   },
 }
 
