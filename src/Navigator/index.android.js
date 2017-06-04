@@ -3,10 +3,10 @@
  */
 import React, { PropTypes } from 'react'
 import {
-  Navigator as RNNavigator,
-  BackAndroid,
+  BackHandler,
   View,
 } from 'react-native'
+import {Navigator as RNNavigator} from 'react-native-deprecated-custom-components'
 import NavBar from './NavBar'
 
 const styles = {
@@ -26,6 +26,19 @@ export default class Navigator extends React.Component {
     hideBack: PropTypes.bool,
     navigationBarHidden: PropTypes.bool,
     shadowHidden: PropTypes.bool, // not use
+  }
+
+  constructor(props) {
+    super(props)
+    this._onHardwareBackPress = this._onHardwareBackPress.bind(this)
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._onHardwareBackPress)
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._onHardwareBackPress)
   }
 
   _onHardwareBackPress() {
@@ -51,14 +64,6 @@ export default class Navigator extends React.Component {
       }
     }
     return undefined
-  }
-
-  componentDidMount() {
-    BackAndroid.addEventListener('hardwareBackPress', this._onHardwareBackPress.bind(this))
-  }
-
-  componentWillUnmount() {
-    BackAndroid.removeEventListener('hardwareBackPress', this._onHardwareBackPress.bind(this))
   }
 
   push(args) { this.refs.nav.push(args) }

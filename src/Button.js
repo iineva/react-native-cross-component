@@ -35,7 +35,7 @@ export class None extends React.Component {
   })
 
   render = ()=>(
-    <TouchableOpacity activeOpacity={this.props.tapable == false ? 1 : 0.6} style={this._style()} onPress={this.props.onPress} disabled={this.props.disabled}>
+    <TouchableOpacity activeOpacity={this.props.tapable == false ? 1 : 0.6} style={this._style()} {...blacklist(this.props, 'style', 'activeOpacity', 'tapable', 'color', 'title', 'fontSize')}>
       {this.props.title?(
         <Text style={this._textStyle()}>{this.props.title}</Text>
       ):null}

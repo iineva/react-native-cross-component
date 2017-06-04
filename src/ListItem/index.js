@@ -117,7 +117,7 @@ export class Input extends React.Component {
 
   render = ()=>(
     <Input.component {...blacklist(this.props, 'children')}>
-      <TextInput ref="input" style={{...styles.input, height: (this.props.style||{}).height||44}} {...this.props.inputProps} />
+      <TextInput ref="input" style={{...styles.input, height: (this.props.style||{}).height||44}} underlineColorAndroid='#0000' {...this.props.inputProps} />
       {this.props.children}
     </Input.component>
   )
